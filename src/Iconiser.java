@@ -7,6 +7,8 @@ public class Iconiser {
     public BufferedImage getIcon(String input, int width, int height) {
         BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
         Graphics2D g = image.createGraphics();
+        g.setColor(Color.WHITE);
+        g.fillRect(0, 0, width, height);
         for (int i : getInputAsCodes(input)) {
             addCharCodeToImage(i, g, width);
         }
@@ -26,7 +28,7 @@ public class Iconiser {
 
     private void addCharCodeToImage(int i, Graphics2D g, int width) {
         g.setColor(new Color(Color.HSBtoRGB((new Random()).nextFloat(), 0.5f, 1f)));
-        g.drawPolygon(new int[]{
+        g.fillPolygon(new int[]{
                 (new Random()).nextInt(width),
                 (new Random()).nextInt(width),
                 (new Random()).nextInt(width)
