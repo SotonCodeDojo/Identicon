@@ -27,7 +27,7 @@ public class Iconiser {
     }
 
     private void addCharCodeToImage(int i, Graphics2D g, int width) {
-        g.setColor(new Color(Color.HSBtoRGB((new Random()).nextFloat(), 0.5f, 1f)));
+        g.setColor(new Color(Color.HSBtoRGB(i / 32f, 0.5f, 1f)));
         g.fillPolygon(new int[]{
                 (new Random()).nextInt(width),
                 (new Random()).nextInt(width),
