@@ -12,4 +12,9 @@ public class Iconiser {
         return null;
     }
 
+    private int[] getInputAsCodes() {
+
+        return null;
+    }
+
 }
