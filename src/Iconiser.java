@@ -29,13 +29,13 @@ public class Iconiser {
     private void addCharCodeToImage(int i, Graphics2D g, int width) {
         g.setColor(new Color(Color.HSBtoRGB(i / 32f, 0.5f, 1f)));
         g.fillPolygon(new int[]{
-                r.nextInt(width) / 2,
-                r.nextInt(width) / 2,
-                r.nextInt(width) / 2
+                r.nextInt(width),
+                r.nextInt(width),
+                r.nextInt(width)
         }, new int[]{
-                r.nextInt(width) / 2,
-                r.nextInt(width) / 2,
-                r.nextInt(width) / 2
+                r.nextInt(width),
+                r.nextInt(width),
+                r.nextInt(width)
         }, 3);
     }
 
