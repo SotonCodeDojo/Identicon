@@ -30,13 +30,13 @@ public class Iconiser {
         Random r = new Random(i);
         g.setColor(new Color(Color.HSBtoRGB(r.nextFloat(), 0.5f, 1f)));
         g.fillPolygon(new int[]{
-                r.nextInt(width),
-                r.nextInt(width),
-                r.nextInt(width)
+                r.nextInt(width) / 2,
+                r.nextInt(width) / 2,
+                r.nextInt(width) / 2
         }, new int[]{
-                r.nextInt(width),
-                r.nextInt(width),
-                r.nextInt(width)
+                r.nextInt(width) / 2,
+                r.nextInt(width) / 2,
+                r.nextInt(width) / 2
         }, 3);
     }
 
