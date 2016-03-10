@@ -35,15 +35,17 @@ public class Identifier extends JFrame {
         panel_image = new ImagePanel();
         this.add(panel_image, BorderLayout.CENTER);
 
-        panel_controls = new JPanel(new SpringLayout());
+        panel_controls = new JPanel(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
 
+        JPanel panel_controls_inner = new JPanel(new SpringLayout());
         label_username = new JLabel("Username:", JLabel.TRAILING);
-        panel_controls.add(label_username);
+        panel_controls_inner.add(label_username);
 
         text_username = new JTextField();
-        panel_controls.add(text_username);
+        panel_controls_inner.add(text_username);
 
-        panel_controls.add(new JPanel());
+        panel_controls_inner.add(new JPanel());
 
         btn_identiconify = new JButton("Identiconify Me!");
         btn_identiconify.setMnemonic(KeyEvent.VK_I);
@@ -51,10 +53,13 @@ public class Identifier extends JFrame {
             BufferedImage image = iconiser.getIcon(text_username.getText(), panel_image.getWidth(), panel_image.getWidth());
             panel_image.setImage(image, true);
         });
-        this.panel_controls.add(btn_identiconify);
-
-        SpringUtilities.makeCompactGrid(this.panel_controls, 2, 2, 6, 6, 6, 6);
-        this.add(panel_controls, BorderLayout.LINE_START);
+        panel_controls_inner.add(btn_identiconify);
+        this.panel_controls.add(panel_controls_inner, c);
+        c.weighty = 1;
+        c.gridy = 1;
+        this.panel_controls.add(new JPanel(), c);
+        SpringUtilities.makeCompactGrid(panel_controls_inner, 2, 2, 6, 6, 6, 6);
+        this.add(this.panel_controls, BorderLayout.LINE_START);
         this.setMinimumSize(new Dimension(800, 600));
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setVisible(true);
