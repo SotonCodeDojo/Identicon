@@ -13,8 +13,14 @@ public class Iconiser {
     }
 
     private int[] getInputAsCodes() {
-
-        return null;
+        char[] inputCharArray = input.toCharArray();
+        int[] charCodes = new int[inputCharArray.length];
+        int i = 0;
+        for (char c : inputCharArray) {
+            charCodes[i] = (int) c;
+            i++;
+        }
+        return charCodes;
     }
 
 }
