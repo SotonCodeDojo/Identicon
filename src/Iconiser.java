@@ -9,8 +9,9 @@ public class Iconiser {
         Graphics2D g = image.createGraphics();
         g.setColor(Color.WHITE);
         g.fillRect(0, 0, width, height);
-        for (int i : getInputAsCodes(input)) {
-            addCharCodeToImage(i, g, width);
+        int[] codes = getInputAsCodes(input);
+        for (int i = codes.length; i != 0; i--) {
+            addCharCodeToImage(codes[i -1], g, width, height);
         }
         return image;
     }
@@ -26,16 +27,17 @@ public class Iconiser {
         return charCodes;
     }
 
-    private void addCharCodeToImage(int i, Graphics2D g, int width) {
+    private void addCharCodeToImage(int i, Graphics2D g, int width, int height) {
         g.setColor(new Color(Color.HSBtoRGB(i / 32f, 0.5f, 1f)));
+        Random r = new Random(i);
         g.fillPolygon(new int[]{
                 r.nextInt(width),
                 r.nextInt(width),
                 r.nextInt(width)
         }, new int[]{
-                r.nextInt(width),
-                r.nextInt(width),
-                r.nextInt(width)
+                r.nextInt(height),
+                r.nextInt(height),
+                r.nextInt(height)
         }, 3);
     }
 
