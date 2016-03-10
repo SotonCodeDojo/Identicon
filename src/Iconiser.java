@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class Iconiser {
@@ -7,13 +8,17 @@ public class Iconiser {
         this.input = input;
     }
 
-    public BufferedImage getIcon() {
-
-        return null;
+    public BufferedImage getIcon(int width, int height) {
+        BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+        Graphics2D g = image.createGraphics();
+        for (int i : getInputAsCodes()) {
+            addCharCodeToImage(i, g);
+        }
+        return image;
     }
 
     private int[] getInputAsCodes() {
-        char[] inputCharArray = input.toCharArray();
+        char[] inputCharArray = input.trim().toCharArray();
         int[] charCodes = new int[inputCharArray.length];
         int i = 0;
         for (char c : inputCharArray) {
@@ -21,6 +26,10 @@ public class Iconiser {
             i++;
         }
         return charCodes;
+    }
+
+    private void addCharCodeToImage(int i, Graphics2D g) {
+
     }
 
 }
