@@ -2,13 +2,14 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Random;
 
-public class Iconiser {
+public class RandomIconiser implements IIconiser {
 
     public BufferedImage getIcon(String input, int width, int height) {
-        BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+        BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g = image.createGraphics();
-        g.setColor(Color.WHITE);
+        g.setComposite(AlphaComposite.Clear);
         g.fillRect(0, 0, width, height);
+        g.setComposite(AlphaComposite.Src);
         int[] codes = getInputAsCodes(input);
         for (int i = codes.length; i != 0; i--) {
             addCharCodeToImage(codes[i -1], g, width, height);
